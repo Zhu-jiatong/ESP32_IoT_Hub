@@ -6,6 +6,8 @@
 
 // the setup function runs once when you press reset or power the board
 void setup() {
+	Serial.begin(115200);
+	delay(1000);
 	Serial.println("Hello World!");
 }
 
