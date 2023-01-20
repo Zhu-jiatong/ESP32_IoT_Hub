@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ESP32_IoT_Hub", "ESP32_IoT_Hub\ESP32_IoT_Hub.vcxproj", "{7F743F29-884F-4D7E-92EB-4898B416A667}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "file_utils", "file_utils\file_utils.vcxitems", "{AC522A82-FB11-4654-A392-19AA06C280BE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "esp32_session_manager", "esp32_session_manager\esp32_session_manager.vcxitems", "{8AA4DCC4-44B9-43D6-9E3C-596420371A11}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Debug|ARM.ActiveCfg = Debug|ARM
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Debug|ARM.Build.0 = Debug|ARM
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Debug|ARM.Deploy.0 = Debug|ARM
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Debug|ARM64.Build.0 = Debug|ARM64
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Debug|x64.ActiveCfg = Debug|x64
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Debug|x64.Build.0 = Debug|x64
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Debug|x64.Deploy.0 = Debug|x64
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Debug|x86.ActiveCfg = Debug|x86
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Debug|x86.Build.0 = Debug|x86
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Debug|x86.Deploy.0 = Debug|x86
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Release|ARM.ActiveCfg = Release|ARM
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Release|ARM.Build.0 = Release|ARM
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Release|ARM.Deploy.0 = Release|ARM
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Release|ARM64.ActiveCfg = Release|ARM64
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Release|ARM64.Build.0 = Release|ARM64
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Release|ARM64.Deploy.0 = Release|ARM64
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Release|x64.ActiveCfg = Release|x64
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Release|x64.Build.0 = Release|x64
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Release|x64.Deploy.0 = Release|x64
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Release|x86.ActiveCfg = Release|x86
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Release|x86.Build.0 = Release|x86
+		{7F743F29-884F-4D7E-92EB-4898B416A667}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9B16C1F-E142-48C4-BB31-0C622348996B}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		esp32_session_manager\esp32_session_manager.vcxitems*{7f743f29-884f-4d7e-92eb-4898b416a667}*SharedItemsImports = 4
+		file_utils\file_utils.vcxitems*{7f743f29-884f-4d7e-92eb-4898b416a667}*SharedItemsImports = 4
+		esp32_session_manager\esp32_session_manager.vcxitems*{8aa4dcc4-44b9-43d6-9e3c-596420371a11}*SharedItemsImports = 9
+		file_utils\file_utils.vcxitems*{ac522a82-fb11-4654-a392-19aa06c280be}*SharedItemsImports = 9
+	EndGlobalSection
+EndGlobal
