@@ -26,7 +26,6 @@ namespace cst
 
 	get_instance_ret get_instance(const char* mountpoint) // TODO: rewrite using std::optional
 	{
-		get_instance_ret temp{};
 		auto found_instance = std::find_if(disks.begin(), disks.end(), [&](SD_info_t this_disk)
 			{ return strcmp(mountpoint, this_disk.mountpoint) == 0; });
 		if (found_instance != disks.end())
