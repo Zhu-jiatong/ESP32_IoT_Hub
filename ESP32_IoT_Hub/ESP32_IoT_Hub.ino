@@ -4,14 +4,19 @@
  Author:	jiaji
 */
 
+#include "hardware.h"
+#include "networking.h"
+
 // the setup function runs once when you press reset or power the board
 void setup() {
 	Serial.begin(115200);
-	delay(1000);
-	Serial.println("Hello World!");
+	cst::begin_SD();
+	cst::load_cfg();
+	cst::begin_network();
+	cst::begin_server();
 }
 
 // the loop function runs over and over again until power down or reset
 void loop() {
-	Serial.println("Loop");
+
 }

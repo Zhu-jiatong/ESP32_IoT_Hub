@@ -21,9 +21,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ESP32_IoT_Hub.ino" />
+    <ClCompile Include="hardware.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="networking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.ESP32_IoT_Hub.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hardware.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="networking.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
