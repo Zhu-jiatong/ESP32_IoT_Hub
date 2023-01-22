@@ -46,7 +46,7 @@ namespace cst
 	void handle_register(AsyncWebServerRequest* request, uint8_t* data, size_t len, size_t index, size_t total)
 	{
 		auto reg_info = JSON.parse(reinterpret_cast<const char*>(data)); // TODO: use in C++ 20 std::bit_cast
-		auto reg_path = credentials_dir + static_cast<const char*>(reg_info["id"]);
+		auto& reg_path = credentials_dir + static_cast<const char*>(reg_info["id"]);
 		if (system_disk.exists(reg_path))
 			return request->send(200, "text/plain", "Registration falied: username taken");
 		system_disk.open(reg_path, FILE_WRITE, true).print(static_cast<const char*>(reg_info["pw"]));
