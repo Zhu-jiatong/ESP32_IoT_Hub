@@ -28,27 +28,13 @@
 		column-gap: 1%;
 	}
 
-	#login_articles {
-		display: flex;
-		flex-flow: wrap;
-		padding: 1%;
-		max-width: 100%;
+	#sign-in-panel-title {
+		margin: 3% auto 1%;
+		font-size: var(--type-ramp-plus-2-font-size);
 	}
 
-	.login_article_item {
-		min-width: min-content;
-		min-height: min-content;
-		max-width: 30%;
-		max-height: 30%;
-		margin: 1%;
-		padding: 1%;
-		transition-duration: 0.05s;
-		overflow-y: hidden;
-	}
-
-	.login_article_item {
-		cursor: pointer;
-		transform: scale(1.05);
+	.warning {
+		color: red;
 	}
 </style>
 
@@ -57,13 +43,14 @@
 		<div id="welcome_text_wrap">
 			<div>
 				<h1>Welcome to the Wireless Hub</h1>
-				<h2>To continue, please sign-in...</h2>
+				<h2>To continue, please sign in...</h2>
 			</div>
-			<fluent-card id="login_articles">
-				<fluent-card class="login_article_item">wefew</fluent-card>
+			<fluent-card class="dashboard">
+				<fluent-card class="dashboard-item">Getting started</fluent-card>
 			</fluent-card>
 		</div>
 		<fluent-card id="main_panel">
+			<span id="sign-in-panel-title">Sign in to Your Account</span>
 			<fluent-tabs>
 				<fluent-tab><span class="fluent-font">&#xee57;</span>&ensp;Login</fluent-tab>
 				<fluent-tab><span class="fluent-font">&#xe7ee;</span>&ensp;Register</fluent-tab>
@@ -75,20 +62,35 @@
 							<p><fluent-text-field id="login-pw" type="password">Password</fluent-text-field></p>
 							<fluent-button id="login-submit" appearance="accent">Login</fluent-button>
 						</form>
+						<div id="login-failed" class="warning" hidden>
+							<span class="fluent-font">&#xe783;</span>
+							<span id="login-failed-text"></span>
+						</div>
 					</fluent-card>
 				</fluent-tab-panel>
 
 				<fluent-tab-panel>
 					<fluent-card class="inner_layer_card">
 						<form>
-							<p><fluent-text-field id="register_id">Username</fluent-text-field></p>
-							<p><fluent-text-field id="register_eml" type="email">Email</fluent-text-field></p>
-							<p><fluent-text-field id="register_pw" type="password" required>Password</fluent-text-field>
+							<p><fluent-text-field id="register-id">Username</fluent-text-field></p>
+							<p><fluent-text-field id="register-eml" type="email">Email</fluent-text-field></p>
+							<p><fluent-text-field id="register-pw" type="password" required>Password</fluent-text-field>
 							</p>
-							<p><fluent-text-field id="register_pw2" type="password" required>Confirm
-									Password</fluent-text-field></p>
+							<p>
+								<fluent-text-field id="register-pw2" type="password" required>
+									Confirm Password
+									<span id="pw-match-warning" class="warning" hidden>
+										&ensp;<span class="fluent-font">&#xe783;</span>
+										<span id="pw-match-warning-text"></span>
+									</span>
+								</fluent-text-field>
+							</p>
 							<fluent-button id="register-submit" appearance="accent">Register</fluent-button>
 						</form>
+						<div id="register-failed" class="warning" hidden>
+							<span class="fluent-font">&#xe783;</span>
+							<span id="register-failed-text"></span>
+						</div>
 					</fluent-card>
 				</fluent-tab-panel>
 			</fluent-tabs>
@@ -101,27 +103,50 @@
 		return document.getElementById(id);
 	}
 
-	_("login-submit").addEventListener("click", () => {
+	_("login-submit").addEventListener("click", async () => {
 		const obj = new Object();
 		obj.id = _("login-id").getAttribute("current-value");
 		obj.pw = _("login-pw").getAttribute("current-value");
 
-		console.log(JSON.stringify(obj));
+		const response = await fetch(new URL("/login", window.origin), {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json', },
+			body: JSON.stringify(obj),
+		});
+
+		if (!response.ok) {
+			const responseText = await response.text();
+			_("login-failed-text").textContent = responseText;
+			_("login-failed").hidden = false;
+			console.error("Login failed:", new Error(responseText));
+		}
 	});
 
-	_("register-submit").addEventListener("click", () => {
-		const pw = _("register_pw").getAttribute("current-value");
-		if (pw !== _("register_pw2").getAttribute("current-value")) {
-			console.log("No match!");
+	_("register-submit").addEventListener("click", async () => {
+		const pw = _("register-pw").getAttribute("current-value");
+		if (pw !== _("register-pw2").getAttribute("current-value")) {
+			_("pw-match-warning-text").textContent = "Not match!";
+			_("pw-match-warning").hidden = false;
 			return;
 		};
 
 		const obj = new Object();
-		obj.id = _("register_id").getAttribute("current-value");
+		obj.id = _("register-id").getAttribute("current-value");
 		obj.pw = pw;
-		obj.eml = _("register_eml").getAttribute("current-value");
+		obj.eml = _("register-eml").getAttribute("current-value");
 
-		console.log(JSON.stringify(obj));
+		const response = await fetch(new URL("/register", window.origin), {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json', },
+			body: JSON.stringify(obj),
+		});
+
+		if (!response.ok) {
+			const responseText = await response.text();
+			_("register-failed-text").textContent = responseText;
+			_("register-failed").hidden = false;
+			console.error("Registration failed:", new Error(responseText));
+		}
 	});
 </script>
 
